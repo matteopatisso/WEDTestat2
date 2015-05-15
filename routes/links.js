@@ -29,14 +29,14 @@ links.get('/:forceData?', function ( req, res ) {
 links.use( auth.requireLogin );
 
 links.get('/:id', function ( req, res ) {
-    res.json( linkMan.getLinkById(req.params.id) );
+    res.json( linkMan.getLinkById( req.params.id ) );
 });
 
 links.delete('/:id', function ( req, res, next ) {
     var id      = req.params.id,
         link    = linkMan.getLinkById(id);
 
-    if ( auth.checkDeletePermission(link) ) {
+    if ( auth.checkDeletePermission( link ) ) {
         linkMan.deleteLinkById(id);
     }
 

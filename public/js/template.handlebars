@@ -1,23 +1,22 @@
 {{#each links}}
     <div class='link' data-id='{{id}}'>
-	<div class='container'>
-		<h2>{{title}}</h2>
-		<p>{{url}}</p>
-		<p class='author'>{{author}}</p>
-		<p class='date'>{{date}}</p>
-        </div>
     	{{#if ../user}}
 		<div class='votings'>
 		    <div class='vote up' data-method='up' data-id='{{id}}'></div>
-		    <div class='ranking'>{{ranking}}</div>
+		    <span class='ranking'>{{ranking}}</span>
 		    <div class='vote down' data-method='down' data-id='{{id}}'></div>
 		</div>
 	{{/if}}
 
-    	{{#equal ../user author}}
-		<div class='delete' data-id='{{id}}'>
+        <div class='container'>
+            <h2>{{title}}</h2>
+            <p><a href='{{url}}' target='_blank'>{{url}}</a></p>
+            <p class='author'>Author: {{author}}</p>
+        </div>
+        <p class='date'>{{date}}</p>
 
-		</div>
+    	{{#equal ../user author}}
+		<input type='submit' class='delete' data-id='{{id}}' value='Delete' />
 	{{/equal}}
     </div>
 {{/each}}

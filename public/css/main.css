@@ -4,61 +4,177 @@
   padding: 0;
 }
 
+/* line 6, ../sass/_general.sass */
+body {
+  font-size: 16px;
+  background: #e9e9e9;
+}
+
+/* line 10, ../sass/_general.sass */
+#wrapper {
+  width: 500px;
+  margin: 0 auto;
+}
+/* line 14, ../sass/_general.sass */
+#wrapper header {
+  padding: 20px;
+  height: 200px;
+  position: relative;
+}
+/* line 18, ../sass/_general.sass */
+#wrapper header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
 /* line 1, ../sass/_links.sass */
-.link {
-  border: 1px solid red;
+#allLinks {
+  clear: both;
+}
+/* line 4, ../sass/_links.sass */
+#allLinks .link {
+  border-top: 1px solid black;
   margin-bottom: 10px;
   height: 100px;
+  padding: 20px;
+  position: relative;
 }
-/* line 6, ../sass/_links.sass */
-.link .container {
+/* line 11, ../sass/_links.sass */
+#allLinks .link .date {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  color: grey;
+  font-size: 0.8rem;
+}
+/* line 19, ../sass/_links.sass */
+#allLinks .link .container {
   float: left;
   height: 100px;
 }
-/* line 9, ../sass/_links.sass */
-.link .container p {
-  width: 200px;
+/* line 23, ../sass/_links.sass */
+#allLinks .link .container h2 {
+  font-style: italic;
+  margin: 0 0 10px 0;
 }
-/* line 12, ../sass/_links.sass */
-.link .votings {
+/* line 27, ../sass/_links.sass */
+#allLinks .link .container p {
+  margin: 0 0 20px 0;
+}
+/* line 32, ../sass/_links.sass */
+#allLinks .link .votings {
   float: left;
+  height: inherit;
+  position: relative;
+  width: 32px;
+  margin: 0 30px 0 0;
 }
-/* line 15, ../sass/_links.sass */
-.link .votings .vote {
-  height: 30px;
-  width: 30px;
+/* line 39, ../sass/_links.sass */
+#allLinks .link .votings .vote {
+  height: 32px;
+  width: 32px;
 }
-/* line 19, ../sass/_links.sass */
-.link .votings .vote.up {
-  background: green;
+/* line 44, ../sass/_links.sass */
+#allLinks .link .votings .vote.up {
+  background: url("../img/s_arrow_up.png") no-repeat center center;
 }
-/* line 22, ../sass/_links.sass */
-.link .votings .vote.down {
-  background: orange;
+/* line 47, ../sass/_links.sass */
+#allLinks .link .votings .vote.down {
+  position: absolute;
+  bottom: 0;
+  background: url("../img/s_arrow_down.png") no-repeat center center;
 }
-/* line 25, ../sass/_links.sass */
-.link .delete {
-  float: left;
-  background: red;
-  width: 30px;
-  height: 30px;
+/* line 52, ../sass/_links.sass */
+#allLinks .link .votings .ranking {
+  padding-top: 7px;
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  height: 40px;
+  width: 32px;
+  font-size: 1.2rem;
+  color: grey;
+}
+/* line 62, ../sass/_links.sass */
+#allLinks .link .delete {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 20px;
+  background-color: rgba(255, 0, 0, 0.59);
 }
 
 /* line 2, ../sass/_form.sass */
 form p {
-  background: greenyellow;
   height: 25px;
 }
-/* line 5, ../sass/_form.sass */
+/* line 4, ../sass/_form.sass */
 form p label {
   float: left;
   display: inline-block;
-  width: 100px;
+  margin: 0 10px 0 0;
+  color: #999;
 }
 /* line 10, ../sass/_form.sass */
-form p input {
+form.addLink {
   float: left;
-  display: inline-block;
+}
+/* line 12, ../sass/_form.sass */
+form.addLink label {
+  display: none;
+}
+/* line 15, ../sass/_form.sass */
+form.logout {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 14px;
+}
+/* line 21, ../sass/_form.sass */
+form.logout:hover input {
+  background: rgba(255, 0, 0, 0.44);
+}
+/* line 25, ../sass/_form.sass */
+form.login input {
+  margin: 40px auto 10px auto;
+}
+
+/* line 28, ../sass/_form.sass */
+input {
+  display: block;
+  padding: 9px;
+  border: 0;
+  outline: 0;
+  width: 300px;
+  background: #FFF;
+  margin: 0 0 20px 0;
+  background-image: -webkit-linear-gradient(top, #FFF 0%, #e9e9e9 100%);
+  background-image: -o-linear-gradient(top, #FFF 0%, #e9e9e9 100%);
+  background-image: linear-gradient(to bottom, #FFF 0%, #e9e9e9 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE9E9E9', GradientType=0);
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+/* line 41, ../sass/_form.sass */
+input:hover, input:focus {
+  border-color: #C9C9C9;
+}
+/* line 44, ../sass/_form.sass */
+input[type="submit"] {
+  width: auto;
+  padding: 9px 15px;
+  background: #617798;
+  border: 0;
+  color: #FFF;
+  margin-top: 10px;
+  font-size: 0.8rem;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -37,13 +37,16 @@ var createValidLink = function ( link ) {
         adjustIdCounter();
     }
 
+	var now = new Date(),
+		weekdays = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+
     var defaultProperties = {
         id: ++data.maxId,
         title: null,
         url: null,
         ranking: 0,
         author: auth.getUsername(),
-        date: new Date().toString()
+        date: weekdays[now.getDay()] + ", " + now.getDate() + "." + Number(now.getMonth() + 1) + "." + now.getFullYear()
     };
 
     for (var prop in defaultProperties) {
@@ -83,9 +86,8 @@ var getFilteredLinks = function ( filter ) {
     }
 
     data.links.forEach(function ( link ) {
-
         for (var prop in filter) {
-            if ( filter.hasOwnProperty(prop) && link.hasOwnProperty(prop) && filter[prop] == link[prop] ) { // must be '==' in this case!
+	        if ( filter.hasOwnProperty(prop) && link.hasOwnProperty(prop) && filter[prop] != link[prop] ) { // must be '!=' and not '!==' in this case!
                 return;
             }
         }

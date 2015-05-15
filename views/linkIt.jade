@@ -1,7 +1,7 @@
 doctype html
 html
     head
-        title= title
+        title LinkIt - Light
         link(rel='stylesheet', href='/css/main.css')
         script(src='js/jquery-2.1.4.min.js')
         script(src='js/handlebars-v3.0.3.js')
@@ -9,10 +9,9 @@ html
         script(src='js/linkAPI.js')
         script(src='js/main.js')
     body
-        if user
-            h1 Hello #{user.name}
-        else
-            h1 Hello Guest
+        #wrapper
+            header.salutation
+                h1 Hello #{user || 'Guest'}
 
-        block content
-            #allLinks
+                block content
+            section#allLinks

@@ -1,13 +1,14 @@
 extends ./linkIt
 prepend content
     form.addLink
-        p
-            label Title
-            input.title(required=true value='sometitle')
-        p
-            label URL
-            input.url(required=true pattern='https?://.+' value='http://test')
+        p would you like to post something..?
+        label(for='title') Title
+        input.title(required=true id='title' placeholder='title')
+
+        label(for='url') URL
+        input.url(required=true id='url' pattern='https?://.+' placeholder='http://...')
         input.addLinkBtn(type='submit', value='Neuer Post')
+
     form.logout(action='/auth/logout' method='post')
         p
-            input.logout(type='submit' value='Logout..')
+            input.logout(type='submit' value='Logout')

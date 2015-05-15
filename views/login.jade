@@ -1,7 +1,5 @@
 extends ./linkIt
 prepend content
     form.login(action='/auth/login' method='post')
-        p
-            label let me know your name:
-            input(type='text' name='username' value='matteo')
-        input(type='submit' value='Login!')
+        input(type='text' required=true placeholder='let me know your name' id='name' name='username')
+        input(type='submit' value='Login')
