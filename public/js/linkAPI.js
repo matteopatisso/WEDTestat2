@@ -27,10 +27,10 @@ window.linkAPI = function () {
 
     this.saveNewPost = function (link, success, error, complete) {
         $.ajax({
-            method   : 'POST',
+	        method   : 'POST',
 	        url      : linkURL,
-            data     : { link : JSON.stringify( link ) },
-            success  : success,
+	        data     : { link : JSON.stringify( link ) },
+	        success  : success,
 	        error    : error,
 	        complete : complete
         });
@@ -39,8 +39,8 @@ window.linkAPI = function () {
     this.deleteLink = function ( id, success, error, complete ) {
         $.ajax({
             method   : 'DELETE',
-            url      : linkURL + '/' + id,
-            success  : success,
+	        url      : linkURL + '/' + id,
+	        success  : success,
 	        error    : error,
 	        complete : complete
         });
@@ -57,8 +57,8 @@ window.linkAPI = function () {
     var vote = function ( id, method, success, error, complete ) {
         $.ajax({
             method   : 'POST',
-            url      : '/links/' + id + '/' + method,
-            success  : success,
+	        url      : '/links/' + id + '/' + method,
+	        success  : success,
 	        error    : error,
 	        complete : complete
         });
@@ -67,8 +67,8 @@ window.linkAPI = function () {
     this.fetchTemplate = function ( success, error, complete ) {
         $.ajax({
             method   : 'GET',
-            url      : '/handleTemplate',
-            success  : success,
+	        url      : '/handleTemplate',
+	        success  : success,
 	        error    : error,
 	        complete : complete
         });
