@@ -13,16 +13,15 @@ var addLink = function ( link ) {
 
 var adjustIdCounter = function () {
     var allIds = [];
-    if(!data.links.length) {
+    if( !data.links.length ) {
         data.maxId = 0;
-        return;
+    } else {
+	    data.links.forEach(function(link) {
+		    allIds.push(link.id);
+	    });
+
+	    data.maxId = Math.max(allIds);
     }
-
-    data.links.forEach(function(link) {
-        allIds.push(link.id);
-    });
-
-    data.maxId = Math.max(allIds);
 };
 
 var createValidLink = function ( link ) {
@@ -30,11 +29,11 @@ var createValidLink = function ( link ) {
         throw "Please provide a link title";
     } else if ( !link.url.match('https?://.+') ) {
         throw "Invalid Link! - URL must start with http(s)://";
-    }else if (auth.isGuest()) {
+    } else if ( auth.isGuest() ) {
         throw "You need to be a user to post a new link";
     }
 
-    if(data.maxId === null) {
+    if( data.maxId === null ) {
         adjustIdCounter();
     }
 
@@ -58,8 +57,7 @@ var createValidLink = function ( link ) {
 
 var deleteLinkById = function ( id ) {
     try {
-        var index = getLinkIndexById(id);
-        data.links.splice(index, 1);
+        data.links.splice( getLinkIndexById(id), 1);
     } catch (err) {
         throw "Could not delete! Error:" + err;
     }
@@ -67,6 +65,7 @@ var deleteLinkById = function ( id ) {
 
 var getLinkIndexById = function ( id ) {
     id = Number(id);
+
     for (var i = 0; i < data.links.length; i++) {
         if ( data.links[i].id === id ) {
             return i;
@@ -84,8 +83,9 @@ var getFilteredLinks = function ( filter ) {
     }
 
     data.links.forEach(function ( link ) {
+
         for (var prop in filter) {
-            if ( filter.hasOwnProperty(prop) && Number(filter[prop]) !== Number(link[prop]) ) {
+            if ( filter.hasOwnProperty(prop) && link.hasOwnProperty(prop) && filter[prop] == link[prop] ) { // must be '==' in this case!
                 return;
             }
         }
@@ -96,43 +96,28 @@ var getFilteredLinks = function ( filter ) {
     return results;
 };
 
-var generateInitData = function () {
-    var fields = {
-        "title": "T",
-        "url": "http://U"
-    };
-
-    for (var i = 1; i < 4; i++) {
-        var obj = {};
-        for (var prop in fields) {
-            if ( fields.hasOwnProperty(prop) ) {
-                obj[prop] = fields[prop] + i;
-            }
-        }
-        data.links.push(createValidLink(obj));
-    }
+var getLinkById = function ( id ) {
+    return getFilteredLinks( { id : id } )[0] || null;
 };
 
-var getLinkById = function ( id ) {
-    return getFilteredLinks({'id': id})[0] || null;
+var sortLinksASC= function ( property ) {
+	data.links.sort(function ( a, b ) {
+		return a[property] < b[property] ? 1 : -1;
+	});
 };
 
 var getAll = function () {
-    data.links.sort(function ( a, b ) {
-        return a.ranking < b.ranking ? 1 : -1;
-    });
+	sortLinksASC( 'ranking' );
 
     return data.links;
 };
 
 var voteUp = function ( id ) {
-    var index = getLinkIndexById(id);
-    data.links[index].ranking++;
+    data.links[ getLinkIndexById(id) ].ranking++;
 };
 
 var voteDown = function ( id ) {
-    var index = getLinkIndexById(id);
-    data.links[index].ranking--;
+    data.links[ getLinkIndexById(id) ].ranking--;
 };
 
 var loadLinks = function ( links ) {
@@ -142,7 +127,6 @@ var loadLinks = function ( links ) {
 module.exports = {
     deleteLinkById: deleteLinkById,
     getFilteredLinks: getFilteredLinks,
-    generateInitData: generateInitData,
     getLinkById: getLinkById,
     getAll: getAll,
     voteUp: voteUp,

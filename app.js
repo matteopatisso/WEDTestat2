@@ -13,7 +13,7 @@ app.use(session({
     secret              : 'quainucitrasi!',
     saveUninitialized   : false,
     resave              : false,
-    cookie              : { maxAge: 60000}
+    cookie              : { maxAge: 60000 }
 }));
 
 app.use(auth.fetchSessionData);

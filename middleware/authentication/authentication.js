@@ -6,7 +6,7 @@ var fetchSessionData = function ( req, res, next ) {
     next();
 };
 
-var requireLogin = function ( req, res, next) {
+var requireLogin = function ( req, res, next ) {
     if( isLoggedIn() ) {
         next();
     } else {
@@ -24,7 +24,7 @@ var logOut = function () {
 };
 
 var isLoggedIn = function () {
-    return Boolean(session && session.user);
+    return Boolean( session && session.user );
 };
 
 var isGuest = function () {
@@ -32,11 +32,11 @@ var isGuest = function () {
 };
 
 var getUsername = function () {
-    return session && session.user ? session.user.name : null;
+    return ( session && session.user ) ? session.user.name : null;
 };
 
 var checkDeletePermission = function ( link ) {
-    if(!link || !link.hasOwnProperty('author')) {
+    if( !link || !link.hasOwnProperty('author') ) {
         return false;
     }
 

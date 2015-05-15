@@ -5,7 +5,7 @@ var fs = require('fs'),
     loadSinceLastSave = false;
 
 var save = function ( obj ) {
-    var json = JSON.stringify(obj);
+    var json = JSON.stringify( obj );
 
     fs.writeFile(storageFile, json, function ( err ) {
         if( err ) {
@@ -18,8 +18,9 @@ var save = function ( obj ) {
 
 var load = function () {
     var result = fs.readFileSync(storageFile, 'utf8');
+
     loadSinceLastSave = true;
-    if(!Boolean(result)) {
+    if( !Boolean(result) ) {
         return [];
     }
 
@@ -34,7 +35,7 @@ var contentHasChanged = function () {
     return !loadSinceLastSave;
 };
 
-var compareData = function ( data ) {
+var dataIsEqual = function ( data ) {
     try {
         return JSON.stringify(data) === JSON.stringify(load());
     } catch (e) {
@@ -46,5 +47,5 @@ module.exports = {
     save : save,
     load : load,
     contentHasChanged : contentHasChanged,
-    compareData : compareData
+	dataIsEqual : dataIsEqual
 };
