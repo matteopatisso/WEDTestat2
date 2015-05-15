@@ -1,9 +1,9 @@
 "use strict";
 var express = require('express'),
     linkMan = require('./../middleware/linkManager/linkManager'),
-    auth = require('./../middleware/authentication/authentication'),
+    auth    = require('./../middleware/authentication/authentication'),
     storage = require('./../middleware/storage/storage'),
-    links = express.Router();
+    links   = express.Router();
 
 links.use(function ( req, res, next ) {
     if(storage.contentHasChanged() && !storage.compareData( linkMan.getAll() )) {

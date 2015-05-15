@@ -24,7 +24,6 @@ gulp.task('supervisor', function () {
     supervisor( "app.js" );
 });
 
-
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('public/js/*.js', ['lint']);

@@ -1,9 +1,9 @@
 "use strict";
 var express = require('express'),
     linkMan = require('../middleware/linkManager/linkManager'),
-    auth = require('../middleware/authentication/authentication'),
-    path = require('path'),
-    router = express.Router();
+    auth    = require('../middleware/authentication/authentication'),
+    path    = require('path'),
+    router  = express.Router();
 
 
 router.get('/', function ( req, res ) {

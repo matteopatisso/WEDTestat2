@@ -21,18 +21,18 @@ var adjustIdCounter = function () {
     data.links.forEach(function(link) {
         allIds.push(link.id);
     });
+
     data.maxId = Math.max(allIds);
 };
 
 var createValidLink = function ( link ) {
-
     if ( !link.title ) {
         throw "Please provide a link title";
     } else if ( !link.url.match('https?://.+') ) {
         throw "Invalid Link! - URL must start with http(s)://";
     }else if (auth.isGuest()) {
-     throw "You need to be a user to post a new link";
-     }
+        throw "You need to be a user to post a new link";
+    }
 
     if(data.maxId === null) {
         adjustIdCounter();
@@ -111,7 +111,6 @@ var generateInitData = function () {
         }
         data.links.push(createValidLink(obj));
     }
-
 };
 
 var getLinkById = function ( id ) {

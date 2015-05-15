@@ -1,7 +1,7 @@
 "use strict";
-var express = require('express'),
-    auth = require('./../middleware/authentication/authentication'),
-    authRouter = express.Router();
+var express     = require('express'),
+    auth        = require('./../middleware/authentication/authentication'),
+    authRouter  = express.Router();
 
 
 authRouter.get('/login', function ( req, res ) {
