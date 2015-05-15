@@ -1,0 +1,23 @@
+{{#each links}}
+    <div class='link' data-id='{{id}}'>
+	<div class='container'>
+		<h2>{{title}}</h2>
+		<p>{{url}}</p>
+		<p class='author'>{{author}}</p>
+		<p class='date'>{{date}}</p>
+        </div>
+    	{{#if ../user}}
+		<div class='votings'>
+		    <div class='vote up' data-method='up' data-id='{{id}}'></div>
+		    <div class='ranking'>{{ranking}}</div>
+		    <div class='vote down' data-method='down' data-id='{{id}}'></div>
+		</div>
+	{{/if}}
+
+    	{{#equal ../user author}}
+		<div class='delete' data-id='{{id}}'>
+
+		</div>
+	{{/equal}}
+    </div>
+{{/each}}

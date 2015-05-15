@@ -1,0 +1,7 @@
+extends ./linkIt
+prepend content
+    form.login(action='/auth/login' method='post')
+        p
+            label let me know your name:
+            input(type='text' name='username' value='matteo')
+        input(type='submit' value='Login!')

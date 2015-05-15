@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/css/main.css')
+        script(src='js/jquery-2.1.4.min.js')
+        script(src='js/handlebars-v3.0.3.js')
+        script(src='js/handlebarHelpers.js')
+        script(src='js/linkAPI.js')
+        script(src='js/main.js')
+    body
+        if user
+            h1 Hello #{user.name}
+        else
+            h1 Hello Guest
+
+        block content
+            #allLinks

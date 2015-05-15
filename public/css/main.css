@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.link {
+  border: 1px solid red;
+  margin-bottom: 10px;
+  height: 100px; }
+  .link .container {
+    float: left;
+    height: 100px; }
+    .link .container p {
+      width: 200px; }
+  .link .votings {
+    float: left; }
+    .link .votings .vote {
+      height: 30px;
+      width: 30px; }
+      .link .votings .vote.up {
+        background: green; }
+      .link .votings .vote.down {
+        background: orange; }
+  .link .delete {
+    float: left;
+    background: red;
+    width: 30px;
+    height: 30px; }
+
+form p {
+  background: lightgreen;
+  height: 25px; }
+  form p label {
+    float: left;
+    display: inline-block;
+    width: 100px; }
+  form p input {
+    float: left;
+    display: inline-block; }
+
+/*# sourceMappingURL=main.css.map */
