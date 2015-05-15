@@ -6,4 +6,5 @@ sass_dir = 'public/sass'
 # javascripts_dir = 'assets/javascripts'
 relative_assets = false
 # line_comments = true
-output_style = :compressed
+# output_style = :compressed
+sourcemap = true
