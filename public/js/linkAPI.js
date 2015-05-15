@@ -26,24 +26,24 @@ window.linkAPI = function () {
     };
 
     this.saveNewPost = function (link, success, error, complete) {
-        $.ajax({
-	        method   : 'POST',
-	        url      : linkURL,
-	        data     : { link : JSON.stringify( link ) },
-	        success  : success,
-	        error    : error,
-	        complete : complete
-        });
+	    $.ajax({
+		    method   : 'POST',
+		    url      : linkURL,
+		    data     : { link : JSON.stringify( link ) },
+		    success  : success,
+		    error    : error,
+		    complete : complete
+	    });
     };
 
     this.deleteLink = function ( id, success, error, complete ) {
-        $.ajax({
-            method   : 'DELETE',
-	        url      : linkURL + '/' + id,
-	        success  : success,
-	        error    : error,
-	        complete : complete
-        });
+	    $.ajax({
+		    method   : 'DELETE',
+		    url      : linkURL + '/' + id,
+		    success  : success,
+		    error    : error,
+		    complete : complete
+	    });
     };
 
     this.voteUp = function ( id, success, error, complete ) {
