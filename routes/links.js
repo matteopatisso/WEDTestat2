@@ -3,6 +3,7 @@ var express = require('express'),
     linkMan = require('./../middleware/linkManager/linkManager'),
     auth    = require('./../middleware/authentication/authentication'),
     storage = require('./../middleware/storage/storage'),
+    rankMap = require('./../middleware/rankingManager/rankingManager'),
     links   = express.Router();
 
 links.use(function ( req, res, next ) {
@@ -54,23 +55,20 @@ links.post('/', function ( req, res, next ) {
     next();
 });
 
-links.post('/:id/up', function ( req, res, next ) {
-	var id = req.params.id;
+links.post('/:id/:method', function ( req, res, next ) {
+	var id      = req.params.id,
+		user    = auth.getUsername(),
+		method  = req.params.method.toLowerCase().charAt(0).toUpperCase() + req.params.method.slice(1);
 
-    linkMan.voteUp( id );
-    res.send( linkMan.getLinkById( id ) );
+	if( !rankMap.hasAlreadyVoted( user, id, method )) {
+		rankMap.registerVote( user, id, method );
+	    linkMan['vote' + method]( id );
+	}
 
+	res.end();
     next();
 });
 
-links.post('/:id/down', function ( req, res, next ) {
-	var id = req.params.id;
-
-    linkMan.voteDown( id );
-    res.send( linkMan.getLinkById( id ) );
-
-    next();
-});
 
 links.use(function () {
     storage.save( linkMan.getAll() );

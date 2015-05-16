@@ -9,6 +9,7 @@ authRouter.get('/login', function ( req, res ) {
 
 authRouter.post('/login', function ( req, res ) {
     auth.logInUser( req.body.username );
+	req.session.rankingMap = {};
     res.redirect('/linkIt');
 });
 
