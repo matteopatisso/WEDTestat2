@@ -9,7 +9,7 @@ var registerVote = function ( user, id, method) {
 	var oppositeMethod = method === 'Up' ? 'Down' : 'Up';
 
 	if(!rankingMap.hasOwnProperty( user )) {
-		rankingMap[ user ] = { Up : [], Down : []};
+		rankingMap[ user ] = {};
 	}
 
 	if(rankingMap[ user ].hasOwnProperty(id + oppositeMethod)) {
@@ -18,7 +18,7 @@ var registerVote = function ( user, id, method) {
 		rankingMap[user][id + method] = true;
 	}
 
-	save();
+	save( rankingMap );
 };
 
 var hasAlreadyVoted = function ( user, id, method ) {
@@ -30,19 +30,35 @@ var hasAlreadyVoted = function ( user, id, method ) {
 	return rankingMap[user].hasOwnProperty( id + method );
 };
 
-var save = function () {
-	fs.writeFile(storageFile, JSON.stringify( rankingMap ));
+var removeRankingEntry = function ( user, id ) {
+	load();
+	delete rankingMap[ user ][ id + 'Up'];
+	delete rankingMap[ user ][ id + 'Down'];
+	save();
+};
+
+var save = function ( obj ) {
+	if(!obj) {
+		obj = rankingMap;
+	}
+	fs.writeFileSync(storageFile, JSON.stringify( obj ));
 };
 
 var load = function () {
 	if(initLoading) {
 		return;
 	}
-	rankingMap = JSON.parse(fs.readFileSync(storageFile, 'utf8'));
-	initLoading = true;
+	if(!fs.existsSync(storageFile)) {
+		save( {} );
+		initLoading = true;
+		rankingMap = {};
+	} else {
+		rankingMap = JSON.parse(fs.readFileSync( storageFile, 'utf8'));
+	}
 };
 
 module.exports = {
 	registerVote : registerVote,
-	hasAlreadyVoted : hasAlreadyVoted
+	hasAlreadyVoted : hasAlreadyVoted,
+	removeRankingEntry : removeRankingEntry
 };

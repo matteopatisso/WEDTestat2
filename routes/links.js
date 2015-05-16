@@ -39,6 +39,7 @@ links.delete('/:id', function ( req, res, next ) {
 
     if ( auth.checkDeletePermission( link ) ) {
         linkMan.deleteLinkById(id);
+	    rankMap.removeRankingEntry( auth.getUsername(), id );
     }
 
     res.end();
