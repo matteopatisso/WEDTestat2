@@ -8,3 +8,9 @@ Handlebars.registerHelper('equal', function( lvalue, rvalue, options ) {
         return options.fn( this );
     }
 });
+
+Handlebars.registerHelper("addRankingClass", function( method ) {
+	method = method.toLowerCase().charAt(0).toUpperCase() + method.slice(1);
+
+	return this["cantRank" + method] ? 'disabled' : '';
+});

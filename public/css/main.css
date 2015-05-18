@@ -63,7 +63,7 @@ body {
 #allLinks .link .container p {
   margin: 0 0 20px 0;
 }
-/* line 32, ../sass/_links.sass */
+/* line 30, ../sass/_links.sass */
 #allLinks .link .votings {
   float: left;
   height: inherit;
@@ -71,22 +71,26 @@ body {
   width: 32px;
   margin: 0 30px 0 0;
 }
-/* line 39, ../sass/_links.sass */
+/* line 37, ../sass/_links.sass */
 #allLinks .link .votings .vote {
   height: 32px;
   width: 32px;
 }
-/* line 44, ../sass/_links.sass */
+/* line 42, ../sass/_links.sass */
 #allLinks .link .votings .vote.up {
   background: url("../img/s_arrow_up.png") no-repeat center center;
 }
-/* line 47, ../sass/_links.sass */
+/* line 45, ../sass/_links.sass */
 #allLinks .link .votings .vote.down {
   position: absolute;
   bottom: 0;
   background: url("../img/s_arrow_down.png") no-repeat center center;
 }
-/* line 52, ../sass/_links.sass */
+/* line 50, ../sass/_links.sass */
+#allLinks .link .votings .vote.disabled {
+  opacity: 0.3;
+}
+/* line 53, ../sass/_links.sass */
 #allLinks .link .votings .ranking {
   padding-top: 7px;
   text-align: center;
@@ -97,7 +101,7 @@ body {
   font-size: 1.2rem;
   color: grey;
 }
-/* line 62, ../sass/_links.sass */
+/* line 63, ../sass/_links.sass */
 #allLinks .link .delete {
   position: absolute;
   bottom: 0;

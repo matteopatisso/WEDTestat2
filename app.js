@@ -5,6 +5,7 @@ var express     = require('express'),
     authRouter  = require('./routes/auth'),
     bodyParser  = require('body-parser'),
     auth        = require('./middleware/authentication/authentication'),
+    rankMan     = require('./middleware/rankingManager/rankingManager'),
     session     = require('express-session'),
     app         = express(),
     server;
@@ -33,6 +34,8 @@ app.set('view engine', 'jade');
 server = app.listen(3000, function () {
     var host = server.address().address,
         port = server.address().port;
+
+	rankMan.load();
 
     console.log('Ok: %s, port: %s', host, port);
 });

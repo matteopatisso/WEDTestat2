@@ -3,7 +3,7 @@ var express = require('express'),
     linkMan = require('./../middleware/linkManager/linkManager'),
     auth    = require('./../middleware/authentication/authentication'),
     storage = require('./../middleware/storage/storage'),
-    rankMap = require('./../middleware/rankingManager/rankingManager'),
+    rankMan = require('./../middleware/rankingManager/rankingManager'),
     links   = express.Router();
 
 links.use(function ( req, res, next ) {
@@ -18,6 +18,12 @@ links.get('/:forceData?', function ( req, res ) {
         dataHasChanged  = req.session.lastRequestData !== (JSON.stringify(newData) + auth.getUsername()),
         forceData       = Boolean( req.params.forceData );
 
+	if( auth.isLoggedIn() ) {
+		for(var i = 0; i < newData.length; i++) {
+			newData[i] = rankMan.addRankingInfoToLink( auth.getUsername(), newData[i] );
+		}
+	}
+	
     if( dataHasChanged || forceData ) {
         req.session.lastRequestData = JSON.stringify( newData ) + auth.getUsername();
         res.json( newData );
@@ -39,7 +45,7 @@ links.delete('/:id', function ( req, res, next ) {
 
     if ( auth.checkDeletePermission( link ) ) {
         linkMan.deleteLinkById(id);
-	    rankMap.removeRankingEntry( auth.getUsername(), id );
+	    rankMan.removeRankingEntry( auth.getUsername(), id );
     }
 
     res.end();
@@ -61,8 +67,8 @@ links.post('/:id/:method', function ( req, res, next ) {
 		user    = auth.getUsername(),
 		method  = req.params.method.toLowerCase().charAt(0).toUpperCase() + req.params.method.slice(1);
 
-	if( !rankMap.hasAlreadyVoted( user, id, method )) {
-		rankMap.registerVote( user, id, method );
+	if( !rankMan.hasAlreadyVoted( user, id, method )) {
+		rankMan.registerVote( user, id, method );
 	    linkMan['vote' + method]( id );
 	}
 

@@ -2,9 +2,9 @@
     <div class='link' data-id='{{id}}'>
     	{{#if ../user}}
 		<div class='votings'>
-		    <div class='vote up' data-method='up' data-id='{{id}}'></div>
+		    <div class='vote up {{addRankingClass 'up'}}' {{bind-attr class="cantRankUp:disabled"}} data-method='up' data-id='{{id}}'></div>
 		    <span class='ranking'>{{ranking}}</span>
-		    <div class='vote down' data-method='down' data-id='{{id}}'></div>
+		    <div class='vote down {{addRankingClass 'down'}}' data-method='down' data-id='{{id}}'></div>
 		</div>
 	{{/if}}
 
