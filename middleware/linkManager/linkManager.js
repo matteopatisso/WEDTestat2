@@ -2,8 +2,7 @@
 var data = {
         links: [],
         maxId: null
-    },
-    auth = require('./../authentication/authentication');
+    };
 
 var addLink = function ( link ) {
     if ( data && data.links ) {
@@ -24,13 +23,11 @@ var adjustIdCounter = function () {
     }
 };
 
-var createValidLink = function ( link ) {
+var createValidLink = function ( username, link ) {
     if ( !link.title ) {
         throw "Please provide a link title";
     } else if ( !link.url.match('https?://.+') ) {
         throw "Invalid Link! - URL must start with http(s)://";
-    } else if ( auth.isGuest() ) {
-        throw "You need to be a user to post a new link";
     }
 
     if( data.maxId === null ) {
@@ -45,7 +42,7 @@ var createValidLink = function ( link ) {
         title: null,
         url: null,
         ranking: 0,
-        author: auth.getUsername(),
+        author: username,
         date: weekdays[now.getDay()] + ", " + now.getDate() + "." + Number(now.getMonth() + 1) + "." + now.getFullYear()
     };
 

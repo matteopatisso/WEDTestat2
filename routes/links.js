@@ -23,7 +23,7 @@ links.get('/:forceData?', function ( req, res ) {
 			newData[i] = rankMan.addRankingInfoToLink( auth.getUsername(), newData[i] );
 		}
 	}
-	
+
     if( dataHasChanged || forceData ) {
         req.session.lastRequestData = JSON.stringify( newData ) + auth.getUsername();
         res.json( newData );
@@ -55,7 +55,7 @@ links.delete('/:id', function ( req, res, next ) {
 links.post('/', function ( req, res, next ) {
     var link = JSON.parse( req.body.link );
 
-    link = linkMan.createValidLink(link);
+    link = linkMan.createValidLink( auth.getUsername(), link);
     linkMan.addLink(link);
 
     res.end();
