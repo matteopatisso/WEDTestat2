@@ -49,17 +49,20 @@ var load = function () {
 	}
 };
 
-var addRankingInfoToLink = function ( user, link ) {
-	var id = link.id;
+var addRankingInfoToLink = function ( user, links ) {
+	var id;
 
-	if(!rankingMap.hasOwnProperty( user )) {
-		link.cantRankUp = link.cantRankDown = false;
-	} else {
-		link.cantRankUp = rankingMap[ user ].hasOwnProperty( id + 'Up' );
-		link.cantRankDown = rankingMap[ user ].hasOwnProperty( id + 'Down' );
+	for(var i = 0; i < links.length; i++) {
+		id = links[i].id;
+
+		if(!rankingMap.hasOwnProperty( user )) {
+			links[i].cantRankUp = links[i].cantRankDown = false;
+		} else {
+			links[i].cantRankUp = rankingMap[ user ].hasOwnProperty( id + 'Up' );
+			links[i].cantRankDown = rankingMap[ user ].hasOwnProperty( id + 'Down' );
+		}
 	}
-
-	return link;
+	return links;
 };
 
 module.exports = {

@@ -124,34 +124,40 @@ form p label {
 /* line 10, ../sass/_form.sass */
 form.addLink {
   float: left;
+  width: 100%;
 }
-/* line 12, ../sass/_form.sass */
+/* line 14, ../sass/_form.sass */
 form.addLink label {
   display: none;
 }
-/* line 15, ../sass/_form.sass */
+/* line 17, ../sass/_form.sass */
 form.logout {
   position: absolute;
   bottom: 0;
   right: 0;
   margin-bottom: 14px;
 }
-/* line 21, ../sass/_form.sass */
+/* line 23, ../sass/_form.sass */
 form.logout:hover input {
   background: rgba(255, 0, 0, 0.44);
 }
-/* line 25, ../sass/_form.sass */
+/* line 27, ../sass/_form.sass */
 form.login input {
   margin: 40px auto 10px auto;
+  width: 300px;
+}
+/* line 30, ../sass/_form.sass */
+form.login input[type=submit] {
+  width: auto;
 }
 
-/* line 28, ../sass/_form.sass */
+/* line 33, ../sass/_form.sass */
 input {
   display: block;
   padding: 9px;
   border: 0;
   outline: 0;
-  width: 300px;
+  width: 100%;
   background: #FFF;
   margin: 0 0 20px 0;
   background-image: -webkit-linear-gradient(top, #FFF 0%, #e9e9e9 100%);
@@ -166,11 +172,11 @@ input {
   text-align: center;
   font-size: 1.1rem;
 }
-/* line 41, ../sass/_form.sass */
+/* line 46, ../sass/_form.sass */
 input:hover, input:focus {
   border-color: #C9C9C9;
 }
-/* line 44, ../sass/_form.sass */
+/* line 49, ../sass/_form.sass */
 input[type="submit"] {
   width: auto;
   padding: 9px 15px;

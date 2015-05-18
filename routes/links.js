@@ -18,13 +18,10 @@ links.get('/:forceData?', function ( req, res ) {
         dataHasChanged  = req.session.lastRequestData !== (JSON.stringify(newData) + auth.getUsername()),
         forceData       = Boolean( req.params.forceData );
 
-	if( auth.isLoggedIn() ) {
-		for(var i = 0; i < newData.length; i++) {
-			newData[i] = rankMan.addRankingInfoToLink( auth.getUsername(), newData[i] );
-		}
-	}
-
     if( dataHasChanged || forceData ) {
+	    if( auth.isLoggedIn() ) {
+		    rankMan.addRankingInfoToLink( auth.getUsername(), newData );
+	    }
         req.session.lastRequestData = JSON.stringify( newData ) + auth.getUsername();
         res.json( newData );
     } else {
