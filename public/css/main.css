@@ -172,11 +172,15 @@ input {
   text-align: center;
   font-size: 1.1rem;
 }
-/* line 46, ../sass/_form.sass */
+/* line 45, ../sass/_form.sass */
+input.error {
+  border: 1px solid red;
+}
+/* line 48, ../sass/_form.sass */
 input:hover, input:focus {
   border-color: #C9C9C9;
 }
-/* line 49, ../sass/_form.sass */
+/* line 51, ../sass/_form.sass */
 input[type="submit"] {
   width: auto;
   padding: 9px 15px;

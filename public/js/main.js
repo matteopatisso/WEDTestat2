@@ -13,13 +13,21 @@
         init();
     });
 
-    var addLinkRequest = function () {
+    var addLinkRequest = function ( e ) {
         var title   = $linkTitleField.val(),
             url     = $linkURLField.val(),
             link    = { title : title, url : url },
-            regex   = $linkURLField.attr('pattern');
+            regex   = 'https?://.+';
+
+	    e.preventDefault();
 
         if ( (!title || !url) || (regex && !url.match( regex ))) {
+	        if(!title) {
+		        $linkTitleField.addClass('error');
+	        } else {
+		        $linkTitleField.removeClass('error');
+		        $linkURLField.addClass('error');
+	        }
             return;
         }
 
@@ -79,11 +87,7 @@
     };
 
     var bindings = function () {
-        var $linkForm   = $('.addLink'),
-            $addLinkBtn = $('.addLinkBtn');
-
-        $linkForm.on( 'submit', function ( e ) { e.preventDefault(); } );
-        $addLinkBtn.on( 'click', addLinkRequest );
+	    $('.addLink').on( 'submit', addLinkRequest );
 
 	    $linksContainer.on('click', '.vote', function ( e ) {
             var $btn    = $(e.target),

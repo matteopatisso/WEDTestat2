@@ -2,9 +2,9 @@
     <div class='link' data-id='{{id}}'>
     	{{#if ../user}}
 		<div class='votings'>
-		    <div class='vote up {{addRankingClass 'up'}}' {{bind-attr class="cantRankUp:disabled"}} data-method='up' data-id='{{id}}'></div>
+		    <div class='vote up {{addRankingClass 'up'}}' {{bind-attr class="cantRankUp:disabled"}} data-method='up'></div>
 		    <span class='ranking'>{{ranking}}</span>
-		    <div class='vote down {{addRankingClass 'down'}}' data-method='down' data-id='{{id}}'></div>
+		    <div class='vote down {{addRankingClass 'down'}}' data-method='down'></div>
 		</div>
 	{{/if}}
 
@@ -16,7 +16,7 @@
         <p class='date'>{{date}}</p>
 
     	{{#equal ../user author}}
-		<input type='submit' class='delete' data-id='{{id}}' value='Delete' />
+		<input type='submit' class='delete' value='Delete' />
 	{{/equal}}
     </div>
 {{/each}}

@@ -73,7 +73,6 @@ links.post('/:id/:method', function ( req, res, next ) {
     next();
 });
 
-
 links.use(function () {
     storage.save( linkMan.getAll() );
 });

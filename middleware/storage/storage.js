@@ -17,7 +17,11 @@ var save = function ( obj ) {
 };
 
 var load = function () {
-    var result = fs.readFileSync(storageFile, 'utf8');
+	if(!fs.existsSync(storageFile)) {
+		fs.closeSync(fs.openSync(storageFile, 'w'));
+	}
+
+	var result = fs.readFileSync(storageFile, 'utf8');
 
     loadSinceLastSave = true;
     if( !Boolean(result) ) {
