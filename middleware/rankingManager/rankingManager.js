@@ -27,9 +27,15 @@ var hasAlreadyVoted = function ( user, id, method ) {
 	return rankingMap[user].hasOwnProperty( id + method );
 };
 
-var removeRankingEntry = function ( user, id ) {
-	delete rankingMap[ user ][ id + 'Up'];
-	delete rankingMap[ user ][ id + 'Down'];
+var removeRankingEntry = function ( id ) {
+
+	for( var user in rankingMap ) {
+		if(rankingMap.hasOwnProperty( user )) {
+			delete rankingMap[ user ][ id + 'Up'];
+			delete rankingMap[ user ][ id + 'Down'];
+		}
+	}
+
 	save();
 };
 

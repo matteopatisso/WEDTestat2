@@ -42,7 +42,7 @@ links.delete('/:id', function ( req, res, next ) {
 
     if ( auth.checkDeletePermission( link ) ) {
         linkMan.deleteLinkById(id);
-	    rankMan.removeRankingEntry( auth.getUsername(), id );
+	    rankMan.removeRankingEntry( id );
     }
 
     res.end();
