@@ -18,9 +18,12 @@ router.get('/handleTemplate', function ( req, res ) {
 });
 
 router.get('/linkIt', function ( req, res ) {
-    var view =  auth.isGuest() ? 'login' : 'index';
+    var view     = auth.isGuest() ? 'login' : 'index',
+	    errorMsg = req.session.errorMsg || null;
 
-    res.render(view, { allLinks : linkMan.getAll(), user : auth.getUsername() } );
+	delete req.session.errorMsg;
+
+    res.render(view, { allLinks : linkMan.getAll(), user : auth.getUsername(), error : errorMsg } );
 });
 
 module.exports = router;

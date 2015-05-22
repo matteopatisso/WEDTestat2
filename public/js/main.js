@@ -72,12 +72,16 @@
     };
 
     var vote = function ( id, method ) {
-        linkAPI['vote' + method]( id, loadContent );
+        linkAPI['vote' + method]( id, loadContent, pageReload);
     };
 
     var setUsername = function ( name ) {
         username = name;
     };
+	
+	var pageReload = function (  ) {
+		location.reload();
+	};
 
     var init = function () {
         linkAPI.fetchUsername(function ( username ) {
@@ -102,7 +106,7 @@
         $linksContainer.on( 'click', '.delete', function ( e ) {
             var id = $(e.target).parents('.link').data('id');
 
-            linkAPI.deleteLink( id, loadContent );
+            linkAPI.deleteLink( id, loadContent, pageReload );
         });
     };
 

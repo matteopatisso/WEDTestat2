@@ -10,7 +10,8 @@ var requireLogin = function ( req, res, next ) {
     if( isLoggedIn() ) {
         next();
     } else {
-        throw "You need to auth for that section";
+	    req.session.errorMsg = "You need to auth for this action";
+        throw "You need to auth for this action";
     }
 };
 

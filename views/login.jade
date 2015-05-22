@@ -1,5 +1,7 @@
 extends ./linkIt
 prepend content
+    if error
+        p.error #{error}
     form.login(action='/auth/login' method='post')
         input(type='text' required=true placeholder='let me know your name' id='name' name='username')
         input(type='submit' value='Login')

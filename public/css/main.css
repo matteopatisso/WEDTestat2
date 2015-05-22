@@ -27,6 +27,11 @@ body {
   text-align: center;
   margin: 0 0 10px 0;
 }
+/* line 24, ../sass/_general.sass */
+#wrapper p.error {
+  color: red;
+  text-align: center;
+}
 
 /* line 1, ../sass/_links.sass */
 #allLinks {
